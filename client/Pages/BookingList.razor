@@ -1,0 +1,82 @@
+﻿@page "/bookings"
+@using sheltermini.Shared;
+@using System.Runtime.Serialization.Formatters;
+@inject HttpClient Http;
+
+<h1 class="mb-3 mt-3">Shopping List</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Kommune</th>
+            <th>Beskrivelse</th>
+            <th>Antal pladser</th>
+            <th>Koordinator</th>
+            <th>Ledig</th>
+            <th>Kontakt</th>
+            <th>Billede</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in BookingLizt)
+        {
+            <tr>
+                <td>@booking.Name</td>
+              <td>@booking.KommuneName</td>
+                <td>@booking.Description</td>
+                <td>@booking.Capacity</td>
+                <td>@booking.lat 
+                    @booking.longitude</td>
+                <td>@booking.IsAvailable</td>
+                <td>@booking.Contact</td>
+                <td>@booking.Picture</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private Booking Book = new Booking();
+
+    private Booking[] BookingLizt = new Booking[0];
+
+    private EditContext aEditContext;
+
+    protected override void OnInitialized()
+    {
+        aEditContext = new EditContext(Book);
+    }
+
+    public async Task HandleValidSubmit()
+    {
+        await AddBooking();
+    }
+
+    private async Task AddBooking()
+    {
+        await Http.PostAsJsonAsync<Booking>("https://localhost:7195/api/booking", Book);
+
+        Console.WriteLine("Klient: add " + Book.Name);
+        BookingLizt = await Http.GetFromJsonAsync<Booking[]>("https://localhost:7195/api/booking");
+        Book = new(); // clear fields in form
+    }
+
+    public string boolAsText(bool b)
+    {
+        return b ? "YES" : "NO";
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        BookingLizt = await Http.GetFromJsonAsync<Booking[]>("https://localhost:7195/api/booking");
+
+    }
+
+  /*  private async Task RemoveItem(Booking Book)
+    {
+        await Http.DeleteAsync($"api/booking/{Book.Id}");
+        BookingLizt = await Http.GetFromJsonAsync<Booking[]>("api/booking");
+    }
+    */
+}
+

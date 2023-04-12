@@ -1,3 +1,5 @@
+using sheltermini.server.Repositories;
+
 namespace server
 {
     public class Program
@@ -5,17 +7,28 @@ namespace server
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+           builder.Services.AddSingleton<IBookingRepository, BookingRepositoryMongoDB>();
 
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("policy",
+                                  policy =>
+                                  {
+                                      policy.AllowAnyOrigin().AllowAnyMethod()
+        .AllowAnyHeader();
+                                  });
+            });
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
 
             app.UseHttpsRedirection();
-
+            app.UseCors("policy");
             app.UseAuthorization();
 
 
