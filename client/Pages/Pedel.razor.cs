@@ -1,36 +1,42 @@
-﻿using System;
-using Microsoft.AspNetCore.Components.Forms;
+﻿using Microsoft.AspNetCore.Components.Forms;
+using sheltermini.Shared;
+using System.Text.Json;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
-namespace sheltermini.Client.Pages
+namespace client.Pages
 {
-	public partial class Pedelpage
-	{
-		private Booking booking = new Booking();
-        private EditContext EditContext;
-        private List<Booking> Bookinglist = new List<Booking>();
-
-        protected override void OnInitialized()
+        public partial class Pedel
         {
-            EditContext = new EditContext(ProductModel);
+            private Booking Shelter = new Booking();
+            private EditContext EditContext;
+
+            
+
+
+        private void HandleSubmit()
+        {
+            Console.WriteLine("HandleSubmit Called...");
+
+            if (EditContext.Validate())
+            {
+                Console.WriteLine("Form is Valid...");
+                HandleValidSubmit();
+
+            }
+            else
+            {
+                Console.WriteLine("Form is Invalid...");
+            }
+
         }
 
-        private void HandleValidSubmit()
+        private void Resetter()
         {
-            Console.WriteLine("HandleValidSubmit Called...");
-            ProductList.Add(ProductModel);
+          //  bookings.Clear();
+
         }
 
-        private void HandleInvalidSubmit()
-        {
-            Console.WriteLine("HandleInvalidSubmit Called...");
-        }
 
-        private void ClearProducts()
-        {
-            ProductList.Clear();
-        }
-
-        public string[] Categories = { "None", "A", "B", "C" };
     }
 }
-

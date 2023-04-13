@@ -100,4 +100,23 @@ a, .btn-link {
         content: var(--blazor-load-percentage-text, "Loading");
     }
 
+
+h1 {
+    font-size: 150%;
+    font-weight: 900;
+    color: white;
+}
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%
     
+}
+tr:nth-child(even) {
+    background-color: #03A189;
+    opacity: 30%;
+}
+th {
+    background-color: white;
+    color: white;
+}

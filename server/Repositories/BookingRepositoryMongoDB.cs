@@ -64,7 +64,7 @@ namespace sheltermini.server.Repositories
                 var Capacity = doc["properties"]["antal_pl"].ToInt32();
                 var Contact = doc["properties"]["kontak_ved"].ToString();
 
-                if (Contact == "BsonNull" || Contact == ",")
+                if (Contact == "BsonNull")  
                 {
                     Contact = Emails[new Random().Next(0, Emails.Count)];
                 };

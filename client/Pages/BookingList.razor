@@ -3,7 +3,17 @@
 @using System.Runtime.Serialization.Formatters;
 @inject HttpClient Http;
 
-<h1 class="mb-3 mt-3">Shopping List</h1>
+<style>
+    body {
+        background: url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80') no-repeat center center fixed;
+        background-size: cover; 
+        img {
+  opacity: 0.3;
+}
+    }
+</style>
+
+<h1 class="mb-3 mt-3">Book Shelters</h1>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -30,7 +40,7 @@
                 <td>@booking.IsAvailable</td>
                 <td>@booking.Contact</td>
                 <td>@booking.Picture</td>
-                <td><button class="btn btn-primary" @onclick="()=>Bookeren(booking)">Book</button></td>
+             <!-- <td><button class="btn btn-primary" @onclick="()=>Bookeren(booking)">Book</button></td> -->
             </tr>
         }
     </tbody>
@@ -73,12 +83,13 @@
 
     }
    
-    private async Task Bookeren(Booking booking)
+   /* private async Task Bookeren(Booking booking)
     {
         booking.IsAvailable = false;
         await Http.PutAsJsonAsync($"https://localhost:7195/api/booking/{booking.Id}", booking);
         BookingLizt = await Http.GetFromJsonAsync<Booking[]>("https://localhost:7195/api/booking");
     }
+   */
     
 
 
