@@ -30,6 +30,7 @@
                 <td>@booking.IsAvailable</td>
                 <td>@booking.Contact</td>
                 <td>@booking.Picture</td>
+                <td><button class="btn btn-primary" @onclick="()=>Bookeren(booking)">Book</button></td>
             </tr>
         }
     </tbody>
@@ -71,6 +72,15 @@
         BookingLizt = await Http.GetFromJsonAsync<Booking[]>("https://localhost:7195/api/booking");
 
     }
+   
+    private async Task Bookeren(Booking booking)
+    {
+        booking.IsAvailable = false;
+        await Http.PutAsJsonAsync($"https://localhost:7195/api/booking/{booking.Id}", booking);
+        BookingLizt = await Http.GetFromJsonAsync<Booking[]>("https://localhost:7195/api/booking");
+    }
+    
+
 
   /*  private async Task RemoveItem(Booking Book)
     {
@@ -78,5 +88,7 @@
         BookingLizt = await Http.GetFromJsonAsync<Booking[]>("api/booking");
     }
     */
+
+  
 }
 

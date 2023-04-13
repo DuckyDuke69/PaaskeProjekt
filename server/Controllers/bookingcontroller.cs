@@ -36,12 +36,12 @@ namespace sheltermini.server.Controllers
             mRepo.Add(shelter);
         }
 
-     /*   [HttpDelete]
+        [HttpDelete]
         [Route("{id}")]
         public void Delete(int id)
         {
             mRepo.Delete(id);
-        } */
+        } 
     }
 }
 
