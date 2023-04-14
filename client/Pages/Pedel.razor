@@ -51,6 +51,15 @@
       <button type="submit" class="btn btn-primary">Submit</button>
 
    </div>
+
+<div class="col-12 mb-3">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    @if (Shelter.IsBooked)
+    {
+        <button type="button" class="btn btn-danger" @onclick="RemoveBooking">Remove Booking</button>
+    }
+</div>
+
 </EditForm>
 -->
 

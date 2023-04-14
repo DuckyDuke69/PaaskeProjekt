@@ -7,6 +7,7 @@
   body {
     background: url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80') no-repeat center center fixed;
     background-size: cover; 
+    opacity: 0.3;
   }
   
   img {
@@ -42,7 +43,6 @@
                 <td>@booking.IsAvailable</td>
                 <td>@booking.Contact</td>
                 <td>@booking.Picture</td>
-             <!-- <td><button class="btn btn-primary" @onclick="()=>Bookeren(booking)">Book</button></td> -->
             </tr>
         }
     </tbody>
@@ -84,13 +84,7 @@
         ShelterLizt = await Http.GetFromJsonAsync<Shelter[]>("https://localhost:7195/api/booking");
 
     }
-  /* private async Task Bookeren(Shelter booking)
-    {
-        booking.IsAvailable = false;
-        await Http.PutAsJsonAsync($"https://localhost:7195/api/booking/{booking.IsAvailable}", booking);
-        ShelterLizt = await Http.GetFromJsonAsync<Shelter[]>("https://localhost:7195/api/booking");
-    } */
-   
+ 
     
 
   /*

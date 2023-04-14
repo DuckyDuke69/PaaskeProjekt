@@ -41,6 +41,23 @@ namespace server.Repositories
             return bookings.ToArray();
         }
 
-            public void AddBook(Booking booking) { }
+            public void AddBook(Booking booking) 
+            {
+            var client = new MongoClient("mongodb+srv://eaajakhj:kajkage02@sheltermini.f1ql71j.mongodb.net/test");
+            var database = client.GetDatabase("sheltermini");
+            var collection = database.GetCollection<BsonDocument>("shelter_bookings");
+            var document = new BsonDocument
+            {
+                { "startDate", booking.Startdate},
+                { "endDate", booking.Slutdate},
+                { "numberOfPeople", booking.NumberOfPeople},
+                { "bookingId", booking.BookingId},
+                { "fullName", booking.FullName},
+                { "email", booking.Email},
+                { "phone", booking.Phone}
+            };
+
+            collection.InsertOne(document);
+        }
     }
 }

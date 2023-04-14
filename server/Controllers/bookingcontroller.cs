@@ -30,6 +30,7 @@ namespace server.Controllers
         {
             Console.WriteLine("post " + booking.FullName);
             mRepo.AddBook(booking);
+
         }
   /*      [EnableCors("policy")]
         [HttpDelete]
