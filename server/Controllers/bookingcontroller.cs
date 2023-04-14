@@ -1,48 +1,40 @@
-﻿using sheltermini.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using server.Repositories;
 using sheltermini.server.Repositories;
-using Microsoft.AspNetCore.Cors;
+using sheltermini.Shared;
 
-namespace sheltermini.server.Controllers
+namespace server.Controllers
 {
-    [ApiController]
-    [Route("api/booking")]
     public class bookingcontroller : ControllerBase
     {
-
-        private IBookingRepository mRepo;
-
-        public bookingcontroller(IBookingRepository repo)
+        private IBookingRepos mRepo;
+        public bookingcontroller(IBooking repo)
         {
             mRepo = repo;
         }
 
-        [HttpGet]
         [EnableCors("policy")]
+        [HttpGet]
         public IEnumerable<Booking> Get()
         {
             Console.WriteLine("get ");
             return mRepo.getAll();
         }
-
+        [EnableCors("policy")]
         [HttpPost]
-        public void AddItem(Booking shelter)
+        public void AddBook(Booking booking, Shelter s)
         {
-            Console.WriteLine("post " + shelter.Name);
-            mRepo.Add(shelter);
+            Console.WriteLine("post " + b.FullName);
+            mRepo.AddBook(s, booking);
         }
-
-  /*      [HttpDelete]
+  /*      [EnableCors("policy")]
+        [HttpDelete]
         [Route("{id}")]
         public void Delete(int id)
         {
             mRepo.Delete(id);
-        } 
+        }   
   */
     }
 }
-

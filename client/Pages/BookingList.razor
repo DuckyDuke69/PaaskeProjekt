@@ -4,14 +4,16 @@
 @inject HttpClient Http;
 
 <style>
-    body {
-        background: url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80') no-repeat center center fixed;
-        background-size: cover; 
-        img {
-  opacity: 0.3;
-}
-    }
+  body {
+    background: url('https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80') no-repeat center center fixed;
+    background-size: cover; 
+  }
+  
+  img {
+    opacity: 0.3;
+  }
 </style>
+
 
 <h1 class="mb-3 mt-3">Book Shelters</h1>
 <table class="table table-striped">
@@ -28,7 +30,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var booking in BookingLizt)
+        @foreach (var booking in ShelterLizt)
         {
             <tr>
                 <td>@booking.Name</td>
@@ -47,29 +49,29 @@
 </table>
 
 @code {
-    private Booking Book = new Booking();
+    private Shelter shelt = new Shelter();
 
-    private Booking[] BookingLizt = new Booking[0];
+    private Shelter[] ShelterLizt = new Shelter[0];
 
     private EditContext aEditContext;
 
     protected override void OnInitialized()
     {
-        aEditContext = new EditContext(Book);
+        aEditContext = new EditContext(shelt);
     }
 
     public async Task HandleValidSubmit()
     {
-        await AddBooking();
+        await AddShelter();
     }
 
-    private async Task AddBooking()
+    private async Task AddShelter()
     {
-        await Http.PostAsJsonAsync<Booking>("https://localhost:7195/api/booking", Book);
+        await Http.PostAsJsonAsync<Shelter>("https://localhost:7195/api/booking", shelt);
 
-        Console.WriteLine("Klient: add " + Book.Name);
-        BookingLizt = await Http.GetFromJsonAsync<Booking[]>("https://localhost:7195/api/booking");
-        Book = new(); // clear fields in form
+        Console.WriteLine("Klient: add " + shelt.Name);
+        ShelterLizt = await Http.GetFromJsonAsync<Shelter[]>("https://localhost:7195/api/booking");
+        shelt = new(); // clear fields in form
     }
 
     public string boolAsText(bool b)
@@ -79,7 +81,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        BookingLizt = await Http.GetFromJsonAsync<Booking[]>("https://localhost:7195/api/booking");
+        ShelterLizt = await Http.GetFromJsonAsync<Shelter[]>("https://localhost:7195/api/booking");
 
     }
    

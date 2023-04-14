@@ -8,13 +8,13 @@ namespace client.Pages
 {
         public partial class Pedel
         {
-            private Booking Shelter = new Booking();
+            private Shelter Shelter = new Shelter();
             private EditContext EditContext;
 
             
 
 
-        private void HandleSubmit()
+     /*   private void HandleSubmit()
         {
             Console.WriteLine("HandleSubmit Called...");
 
@@ -35,7 +35,8 @@ namespace client.Pages
         {
           //  bookings.Clear();
 
-        }
+        } 
+     */
 
 
     }

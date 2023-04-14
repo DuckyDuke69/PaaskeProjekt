@@ -7,7 +7,7 @@ namespace server
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-           builder.Services.AddSingleton<IBookingRepository, BookingRepositoryMongoDB>();
+           builder.Services.AddSingleton<IShelterRepository, ShelterRepositoryMongoDB>();
 
             // Add services to the container.
 

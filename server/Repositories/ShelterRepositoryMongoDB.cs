@@ -5,18 +5,18 @@ using MongoDB.Driver;
 
 namespace sheltermini.server.Repositories
 {         
-    public class BookingRepositoryMongoDB : IBookingRepository
+    public class ShelterRepositoryMongoDB : IShelterRepository
     {
-        private List<Booking> bookings;
+        private List<Shelter> shelters;
         
-        public BookingRepositoryMongoDB()
+        public ShelterRepositoryMongoDB()
         {
-            bookings = new();
+            shelters = new();
         }
 
-        public Booking[] getAll()
+        public Shelter[] getAll()
         {
-            bookings.Clear();
+            shelters.Clear();
             var client = new MongoClient("mongodb+srv://eaajakhj:kajkage02@sheltermini.f1ql71j.mongodb.net/test");
             var database = client.GetDatabase("sheltermini");
             var collection = database.GetCollection<BsonDocument>("aarhus_shelters");
@@ -70,17 +70,17 @@ namespace sheltermini.server.Repositories
                 };
                 var lat = doc["geometry"]["coordinates"][0][0].ToDecimal();
                 var longitude = doc["geometry"]["coordinates"][0][1].ToDecimal();
-                var mbook = new Booking { Name = Name, KommuneName = KommuneName, Description = Description, Capacity = Capacity, Contact = Contact, lat = lat, longitude = longitude };
+                var mbook = new Shelter { Name = Name, KommuneName = KommuneName, Description = Description, Capacity = Capacity, Contact = Contact, lat = lat, longitude = longitude };
                 
             
                 
-                bookings.Add(mbook);
+                shelters.Add(mbook);
             }
 
-            return bookings.ToArray();
+            return shelters.ToArray();
         }
         
-         public void Add(Booking shelter)
+         public void Add(Shelter shelter)
         {
             var client = new MongoClient("mongodb+srv://eaajakhj:kajkage02@sheltermini.f1ql71j.mongodb.net/test");
             var database = client.GetDatabase("sheltermini");

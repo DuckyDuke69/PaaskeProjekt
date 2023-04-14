@@ -101,22 +101,19 @@ a, .btn-link {
     }
 
 
-h1 {
-    font-size: 150%;
-    font-weight: 900;
-    color: white;
+table, td, th {
+    border: 1px solid gray;
+    text-align: left;
+    opacity: 85%;
 }
+
 table {
-    font-family: Arial, sans-serif;
     border-collapse: collapse;
-    width: 100%
-    
+    width: 100%;
 }
-tr:nth-child(even) {
-    background-color: #03A189;
-    opacity: 30%;
-}
-th {
-    background-color: white;
+
+th, td {
+    background-color: black;
     color: white;
+    padding: 15px;
 }
