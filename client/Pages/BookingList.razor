@@ -84,23 +84,22 @@
         ShelterLizt = await Http.GetFromJsonAsync<Shelter[]>("https://localhost:7195/api/booking");
 
     }
-   
-   /* private async Task Bookeren(Booking booking)
+  /* private async Task Bookeren(Shelter booking)
     {
         booking.IsAvailable = false;
-        await Http.PutAsJsonAsync($"https://localhost:7195/api/booking/{booking.Id}", booking);
-        BookingLizt = await Http.GetFromJsonAsync<Booking[]>("https://localhost:7195/api/booking");
-    }
-   */
+        await Http.PutAsJsonAsync($"https://localhost:7195/api/booking/{booking.IsAvailable}", booking);
+        ShelterLizt = await Http.GetFromJsonAsync<Shelter[]>("https://localhost:7195/api/booking");
+    } */
+   
     
 
-
-  /*  private async Task RemoveItem(Booking Book)
+  /*
+   private async Task RemoveItem(Booking Book)
     {
-        await Http.DeleteAsync($"api/booking/{Book.Id}");
+        await Http.DeleteAsync($"api/shelter/{Book.Id}");
         BookingLizt = await Http.GetFromJsonAsync<Booking[]>("api/booking");
     }
-    */
+  */
 
   
 }

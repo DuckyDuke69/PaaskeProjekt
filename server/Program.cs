@@ -1,3 +1,4 @@
+using server.Repositories;
 using sheltermini.server.Repositories;
 
 namespace server
@@ -8,6 +9,7 @@ namespace server
         {
             var builder = WebApplication.CreateBuilder(args);
            builder.Services.AddSingleton<IShelterRepository, ShelterRepositoryMongoDB>();
+           builder.Services.AddSingleton<IBookingRepos, BookingRepos>();
 
             // Add services to the container.
 

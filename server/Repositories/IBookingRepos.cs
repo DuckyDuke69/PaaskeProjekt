@@ -4,8 +4,9 @@ namespace server.Repositories
 {
     public interface IBookingRepos 
     {
+    //     Booking[] getAll(Shelter s);
         Booking[] getAll(Shelter s);
-        void AddBook(Booking booking, Shelter s);
+        void AddBook(Booking booking);
        
     }
 }

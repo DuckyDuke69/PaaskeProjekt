@@ -2,6 +2,7 @@
 @using sheltermini.Shared;
 @inject HttpClient Http;
 
+<!--
 <h1 class="mb-3 mt-3">Booking Oversigter</h1>
  
 <EditForm Model="@Shelter" class="row p-3">
@@ -24,7 +25,8 @@
    <div class="col-12 mb-3">
       <div class="form-check">
          <InputCheckbox id="IsAvailable" @bind-Value="Shelter.IsAvailable" class="form-check-input" />
-         <label class="form-check-label" for="IsAvailable">
+         <label class="form-check-label" for="IsAvailable"><a href="c:\users\asbjørn\desktop\c#\sheltermini\client\pages\pedel.razor.cs">c:\users\asbjørn\desktop\c#\sheltermini\client\pages\pedel.razor.cs</a>
+<a href="c:\users\asbjørn\desktop\c#\sheltermini\client\pages\pedel.razor">c:\users\asbjørn\desktop\c#\sheltermini\client\pages\pedel.razor</a>
          Tilgængelighed
          </label>
       </div> 
@@ -50,7 +52,7 @@
 
    </div>
 </EditForm>
-
+-->
 
 @code {
      Shelter shelter = new();
@@ -61,6 +63,7 @@
         {
             aEditContext = new EditContext(shelter);
         }
+
 
      /*   public async Task HandleValidSubmit()
         {

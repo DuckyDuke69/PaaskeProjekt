@@ -6,27 +6,29 @@ using sheltermini.Shared;
 
 namespace server.Controllers
 {
+    [ApiController]
+    [Route("api/bookinglisten")]
     public class bookingcontroller : ControllerBase
     {
         private IBookingRepos mRepo;
-        public bookingcontroller(IBooking repo)
+        public bookingcontroller(IBookingRepos repo)
         {
             mRepo = repo;
         }
 
         [EnableCors("policy")]
         [HttpGet]
-        public IEnumerable<Booking> Get()
+        public IEnumerable<Booking> Get(Shelter s)
         {
             Console.WriteLine("get ");
-            return mRepo.getAll();
+            return mRepo.getAll(s);  
         }
         [EnableCors("policy")]
         [HttpPost]
-        public void AddBook(Booking booking, Shelter s)
+        public void AddBook(Booking booking)
         {
-            Console.WriteLine("post " + b.FullName);
-            mRepo.AddBook(s, booking);
+            Console.WriteLine("post " + booking.FullName);
+            mRepo.AddBook(booking);
         }
   /*      [EnableCors("policy")]
         [HttpDelete]

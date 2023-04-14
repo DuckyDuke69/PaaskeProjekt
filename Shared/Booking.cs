@@ -8,14 +8,19 @@ namespace sheltermini.Shared
 {
     public class Booking
     {
-     public   Shelter shelter { get; set;}
-      public  DateTime Startdate { get; set;}
-     public   DateTime Slutdate { get; set;}
-     public   int numberOfPeople { get; set;}
-      public  int bookingId { get; set;}
+        private static int lastId = 0;
+        public Booking()
+        {
+            BookingId = ++lastId;
+        }
+        public   Shelter Shelter { get; set;}
+      public  string Startdate { get; set;}
+     public   string Slutdate { get; set;}
+     public   int NumberOfPeople { get; set;}
+      public  int BookingId { get; set;}
       public  string FullName { get; set;} = "";
-       public string email { get; set;}
-     public   string phone { get; set;}
+       public string Email { get; set;}
+     public   string Phone { get; set;}
       //  string comment;
 /*      public Booking(Shelter shelter, DateTime Startdate, DateTime Slutdate, int numberOfPeople, int bookingId, string name, string email, string phone)
         {
