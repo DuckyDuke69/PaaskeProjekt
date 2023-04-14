@@ -18,10 +18,11 @@ namespace server.Controllers
 
         [EnableCors("policy")]
         [HttpGet]
-        public IEnumerable<Booking> Get(Shelter s)
+        public IEnumerable<Booking> Get()
         {
+            Shelter shelter = new Shelter();
             Console.WriteLine("get ");
-            return mRepo.getAll(s);  
+            return mRepo.getAll(shelter);  
         }
         [EnableCors("policy")]
         [HttpPost]
